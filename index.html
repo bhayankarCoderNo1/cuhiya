@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorry Varnika 💔</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      padding: 20px;
+      position: relative;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 400px;
+      animation: floatIn 1.2s ease-out;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 15px;
+      animation: fadeSlide 1.2s ease forwards;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      animation: fadeSlide 1.5s ease forwards;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeSlide 1.8s ease forwards;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+    }
+
+    /* Cat animation */
+    .cat {
+      width: 80px;
+      height: 80px;
+      background: url('https://cdn.pixabay.com/photo/2016/03/09/09/28/cat-1248362_960_720.png') no-repeat center center;
+      background-size: contain;
+      position: relative;
+      margin: 0 auto;
+      animation: none;
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Cat Jump Animation */
+    @keyframes catJump {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-30px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    /* Cat Kneel Animation */
+    @keyframes catKneel {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    #love {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #e91e63;
+      visibility: hidden;
+    }
+
+    @keyframes glowFade {
+      0% {
+        opacity: 0;
+        text-shadow: none;
+      }
+      50% {
+        opacity: 1;
+        text-shadow: 0 0 15px #ff69b4;
+      }
+      100% {
+        opacity: 1;
+        text-shadow: 0 0 20px #ff69b4;
+      }
+    }
+
+    #moveMessage {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2rem;
+      color: #ff4d6d;
+      font-weight: bold;
+      visibility: hidden;
+    }
+
+    #secondMessage {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #ff4d6d;
+      font-weight: bold;
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cat" id="cat"></div>
+    <h1>Maaf Kar Do Na, Varnika 💕</h1>
+    <p>
+      Jaanu, mujhse galti ho gayi... 😔<br />
+      Jo bhi maine kaha ya kiya, uska mujhe sach mein bahut afsos hai.<br />
+      Tum meri duniya ho, aur tumhe hurt karne ka maqsad kabhi nahi tha.<br />
+      Please mujhe maaf kar do... 💔<br />
+      Tumse behtar koi nahi mere liye, sach mein.<br />
+      Ek chhota sa chance de do na... main sudhar jaaunga I promise. 🙏🥺❤️
+    </p>
+
+    <div class="buttons">
+      <button onclick="showLove()">💖 Maaf kar dogi?</button>
+      <button id="noBtn" onclick="moveButton()">Nahi karungi maaf 😤</button>
+    </div>
+
+    <div id="love">I love youuuu sooo much 💗</div>
+  </div>
+
+  <div id="moveMessage">Please maaf kar do 🙏💖</div>
+  <div id="secondMessage">Baby maan jaao na! Kitna bhav khaogi 😢</div>
+
+  <script>
+    let clicked = false;
+
+    function showLove() {
+      const cat = document.getElementById('cat');
+      const love = document.getElementById('love');
+      const secondMessage = document.getElementById('secondMessage');
+      const moveMessage = document.getElementById('moveMessage');
+
+      // Reset visibility
+      secondMessage.style.visibility = "hidden";
+      moveMessage.style.visibility = "hidden";
+
+      // Cat animation: Jump
+      cat.style.animation = "catJump 1s ease";
+      
+      // Show the love message
+      love.style.visibility = "visible";
+    }
+
+    function moveButton() {
+      const noBtn = document.getElementById('noBtn');
+      const moveMessage = document.getElementById('moveMessage');
+      const secondMessage = document.getElementById('secondMessage');
+      const cat = document.getElementById('cat');
+      const love = document.getElementById('love');
+
+      // Reset visibility
+      love.style.visibility = "hidden";
+
+      // Move the button to a random spot
+      const randomTop = Math.floor(Math.random() * 80) + 10;
+      const randomLeft = Math.floor(Math.random() * 80) + 10;
+      noBtn.style.position = "absolute";
+      noBtn.style.top = randomTop + "%";
+      noBtn.style.left = randomLeft + "%";
+
+      // Cat animation: Kneel
+      cat.style.animation = "catKneel 1s ease";
+
+      // Show the "Please maaf kar do" message
+      moveMessage.style.visibility = "visible";
+      setTimeout(() => {
+        moveMessage.style.visibility = "hidden";
+      }, 3000);
+
+      // Show the second message
+      secondMessage.style.visibility = "visible";
+    }
+  </script>
+</body>
+</html>
